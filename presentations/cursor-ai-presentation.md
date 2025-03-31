@@ -122,36 +122,64 @@ weeks, and cloud storage...
 
 # Going Live with Vercel
 
-1. **Setup** (2 min)
+1. **Quick Deploy**
    ```bash
    npm install -g vercel
-   vercel login
-   ```
-
-2. **Deploy**
-   ```bash
    vercel
    ```
 
-3. **Environment Variables**
-   - Add Firebase config
-   - Production ready!
+2. **Project Setup**
+   - Skip "existing project" (Enter)
+   - Name it "work-hours-tracker"
+   - Select personal account
+   - Current directory? Yes
 
-*Demo: Live deployment during presentation*
+*That's it! App is live and working! 🚀*
 
 ---
 
-# Lessons Learned
+# Lessons Learned (1/3)
 
 1. **AI Understanding**
    - Contextual awareness
+     > Understood Finnish calendar needs
+     > Remembered previous code decisions
+     > Suggested fixes based on our stack
+   
    - Natural language power
-   - Technical accuracy
+     > "Add a button to copy last week's hours"
+     > "Fix the infinite loop in useEffect"
+     > "Make dates show in Finnish format"
 
-2. **Development Speed**
+---
+
+# Lessons Learned (2/3)
+
+2. **Technical Precision**
+   - Code quality
+     > Proper React hooks usage
+     > TypeScript type definitions
+     > Firebase security rules
+
    - Rapid prototyping
+     > Full weekly view in minutes
+     > Firebase setup without docs
+     > Instant Tailwind styling
+
+---
+
+# Lessons Learned (3/3)
+
+3. **Development Flow**
    - Quick problem solving
+     > useEffect dependency fixes
+     > Date formatting solutions
+     > State management patterns
+   
    - Instant documentation
+     > Explained each code decision
+     > Suggested best practices
+     > Provided usage examples
 
 ---
 
