@@ -145,7 +145,7 @@ export const WeekView = () => {
                     {format(day, 'EEEEEE', { locale: fi })}
                   </div>
                   <div className="text-sm text-gray-600">
-                    {format(day, 'd.M.yyyy', { locale: fi })}
+                    {format(day, 'd.M', { locale: fi })}
                   </div>
                 </th>
               ))}
