@@ -21,6 +21,11 @@ export interface Project {
   color?: string;
 }
 
+export interface WeekData {
+  weekStart: string;
+  hours: WeekHours;
+}
+
 export const workHoursService = {
   async saveWorkHours(weekStart: Date, hours: WeekHours) {
     const weekId = format(weekStart, "'week'_yyyy-MM-dd");
@@ -66,5 +71,14 @@ export const workHoursService = {
     };
     await setDoc(docRef, newProject);
     return newProject;
+  },
+
+  async getAllWorkHours(): Promise<WeekData[]> {
+    const hoursRef = collection(db, 'workHours');
+    const snapshot = await getDocs(hoursRef);
+    return snapshot.docs.map(doc => ({
+      weekStart: doc.data().weekStart,
+      hours: doc.data().hours as WeekHours
+    }));
   }
 }; 

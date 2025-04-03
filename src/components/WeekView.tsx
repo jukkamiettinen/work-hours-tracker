@@ -3,6 +3,8 @@ import { format, startOfWeek, addDays, subWeeks, addWeeks, getWeek } from 'date-
 import { fi } from 'date-fns/locale';
 import { workHoursService, WeekHours, Project } from '../services/workHoursService';
 
+const STANDARD_HOURS_PER_DAY = 7.5;
+
 export const WeekView = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [workHours, setWorkHours] = useState<WeekHours>({});
@@ -87,6 +89,25 @@ export const WeekView = () => {
       console.error('Error saving work hours:', err);
       setError(err instanceof Error ? err.message : 'Failed to save work hours');
     }
+  };
+
+  const calculateDayDifference = (dayHours: Record<string, number>) => {
+    const totalHours = Object.values(dayHours).reduce((sum, hours) => sum + hours, 0);
+    // Only calculate difference if there are hours entered
+    return totalHours > 0 ? +(totalHours - STANDARD_HOURS_PER_DAY).toFixed(1) : null;
+  };
+
+  const calculateTotalDifference = () => {
+    return weekDays
+      .map(day => {
+        const dateStr = format(day, 'yyyy-MM-dd');
+        const dayHours = workHours[dateStr] || {};
+        const totalHours = Object.values(dayHours).reduce((sum, hours) => sum + hours, 0);
+        // Only include days that have hours
+        return totalHours > 0 ? calculateDayDifference(dayHours) : null;
+      })
+      .filter(diff => diff !== null) // Filter out null values (days without hours)
+      .reduce((sum, diff) => sum + (diff || 0), 0);
   };
 
   if (isLoading) {
@@ -175,15 +196,16 @@ export const WeekView = () => {
                           parseFloat(e.target.value)
                         )}
                         className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="0"
+                        placeholder=""
                       />
                     </td>
                   );
                 })}
                 <td className="p-2 border-b font-semibold">
                   {weekDays
-                    .map(day => workHours[format(day, 'yyyy-MM-dd')]?.[project.id] || 0)
-                    .reduce((sum, hours) => sum + hours, 0)
+                    .map(day => workHours[format(day, 'yyyy-MM-dd')]?.[project.id] || '')
+                    .filter(hours => hours !== '')
+                    .reduce((sum, hours) => sum + (typeof hours === 'number' ? hours : 0), 0)
                     .toFixed(1)}
                 </td>
               </tr>
@@ -196,14 +218,36 @@ export const WeekView = () => {
                 const total = Object.values(dayHours).reduce((sum, hours) => sum + hours, 0);
                 return (
                   <td key={day.toISOString()} className="p-2 border-b text-center">
-                    {total.toFixed(1)}
+                    {total > 0 ? total.toFixed(1) : ''}
                   </td>
                 );
               })}
               <td className="p-2 border-b">
                 {Object.values(workHours)
-                  .reduce((sum, day) => sum + Object.values(day).reduce((daySum, hours) => daySum + hours, 0), 0)
-                  .toFixed(1)}
+                  .reduce((sum, day) => sum + Object.values(day).reduce((daySum, hours) => daySum + hours, 0), 0) > 0 
+                  ? Object.values(workHours)
+                      .reduce((sum, day) => sum + Object.values(day).reduce((daySum, hours) => daySum + hours, 0), 0)
+                      .toFixed(1)
+                  : ''}
+              </td>
+            </tr>
+            <tr className="bg-gray-100">
+              <td className="p-2 border-b">+/- (7.5h)</td>
+              {weekDays.map((day) => {
+                const dateStr = format(day, 'yyyy-MM-dd');
+                const dayHours = workHours[dateStr] || {};
+                const totalHours = Object.values(dayHours).reduce((sum, hours) => sum + hours, 0);
+                // Only show difference if there are hours entered
+                const difference = totalHours > 0 ? calculateDayDifference(dayHours) : null;
+                const textColor = difference !== null ? (difference > 0 ? 'text-green-600' : difference < 0 ? 'text-red-600' : '') : '';
+                return (
+                  <td key={day.toISOString()} className={`p-2 border-b text-center ${textColor}`}>
+                    {difference !== null && ((difference > 0 ? '+' : '') + difference)}
+                  </td>
+                );
+              })}
+              <td className={`p-2 border-b font-bold ${calculateTotalDifference() > 0 ? 'text-green-600' : calculateTotalDifference() < 0 ? 'text-red-600' : ''}`}>
+                {calculateTotalDifference() !== 0 && ((calculateTotalDifference() > 0 ? '+' : '') + calculateTotalDifference().toFixed(1))}
               </td>
             </tr>
           </tbody>

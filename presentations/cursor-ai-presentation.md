@@ -40,184 +40,123 @@ style: |
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
     }
 
-# Cursor AI: Your AI Pair Programming Companion
+# AI-Assisted Development in Practice
 
-## Live Demo: Building a Work Hours Tracker
+## Building a Real App with Cursor AI
 ---
 
-# Today's Challenge
+# Today's Demo
+
+1. **Live Example**: Work Hours Tracker
+2. **AI Collaboration**: Natural language to working code
+3. **Practical Insights**: Real development workflow
+4. **Open Discussion**: Experiences and learnings
+
+---
+
+# The Challenge
 
 Build a work hours tracking app with:
-- Weekly view (7 days)
-- Previous/Next week navigation
-- Copy previous week's hours
+- Weekly view with navigation
 - Cloud storage
-- Finnish calendar (Monday first)
+- Finnish calendar support
+- Overtime calculations
 
-**All using natural language with AI!**
-
----
-
-# Our Tech Stack
-
-```typescript
-// Frontend
-React + TypeScript + Vite
-Tailwind CSS
-date-fns
-
-// Backend
-Firebase (Firestore)
-
-// Time: 30 minutes
-// Complexity: Medium
-// AI Assistance: Maximum
-```
+**From idea to production in one session!**
 
 ---
 
-# Live Demo Structure
+# Where AI Shines: Technical Setup
 
-1. **Project Setup** (5 min)
-   - Create project with Vite
-   - Configure Tailwind & Firebase
+1. **Project Scaffolding**
+   - "Set up a Vite React project"
+   - "Add Tailwind for styling"
+   - "Configure Firebase storage"
 
-2. **Core Features** (15 min)
-   - Weekly view component
-   - Navigation & date handling
-   - Hours input system
-
-3. **Cloud Integration** (10 min)
-   - Firebase setup
-   - Data storage
-   - Testing
+2. **Best Practices**
+   - Generated with types
+   - Modern component patterns
+   - Security by default
 
 ---
 
-# Key AI Interactions to Watch
+# Where AI Shines: Problem Solving
 
-1. **Natural Language**
-   "Create a weekly view component..."
+1. **Complex Logic Made Simple**
+   - Finnish date handling
+   - Overtime calculations
+   - State management
 
-2. **Problem Solving**
-   "How do I handle Finnish calendar..."
-
-3. **Debugging**
-   "Why is my useEffect looping..."
-
----
-
-# Live Demo Starts!
-
-Initial prompt:
-```
-Build a web UI for tracking work hours
-with a weekly view, navigation between
-weeks, and cloud storage...
-```
-
-[Starting live coding now...]
+2. **Real-time Debugging**
+   - "Fix the infinite loop"
+   - "Optimize performance"
+   - "Add proper types"
 
 ---
 
-# Going Live with Vercel
+# Live Demo Highlights
 
-1. **Quick Deploy**
-   ```bash
-   npm install -g vercel
-   vercel
-   ```
+1. **Natural Language Input**
+   > "Create a weekly view that shows
+   work hours per day"
 
-2. **Project Setup**
-   - Skip "existing project" (Enter)
-   - Name it "work-hours-tracker"
-   - Select personal account
-   - Current directory? Yes
+2. **AI Understanding**
+   > "Add overtime calculation based
+   on 7.5h workday"
 
-*That's it! App is live and working! 🚀*
+3. **Quick Iterations**
+   > "Now exclude empty days from
+   the calculation"
 
 ---
 
-# Lessons Learned (1/3)
+# Practical Workflow Tips
 
-1. **AI Understanding**
-   - Contextual awareness
-     > Understood Finnish calendar needs
-     > Remembered previous code decisions
-     > Suggested fixes based on our stack
-   
-   - Natural language power
-     > "Add a button to copy last week's hours"
-     > "Fix the infinite loop in useEffect"
-     > "Make dates show in Finnish format"
+1. **Clear Requirements**
+   - Be specific
+   - Provide context
+   - Show examples
 
----
-
-# Lessons Learned (2/3)
-
-2. **Technical Precision**
-   - Code quality
-     > Proper React hooks usage
-     > TypeScript type definitions
-     > Firebase security rules
-
-   - Rapid prototyping
-     > Full weekly view in minutes
-     > Firebase setup without docs
-     > Instant Tailwind styling
-
----
-
-# Lessons Learned (3/3)
-
-3. **Development Flow**
-   - Quick problem solving
-     > useEffect dependency fixes
-     > Date formatting solutions
-     > State management patterns
-   
-   - Instant documentation
-     > Explained each code decision
-     > Suggested best practices
-     > Provided usage examples
+2. **Iterative Development**
+   - Start with core features
+   - Add complexity gradually
+   - Test each iteration
 
 ---
 
 # Best Practices
 
-1. **Clear Communication**
+1. **Code Review**
+   - Understand the generated code
+   - Check security implications
+   - Verify edge cases
 
-    - Be specific in requests
-    - Provide context
-    - Ask for explanations
-
-2. **Verification**
-    - Review generated code
-    - Test thoroughly
-    - Understand the solutions
+2. **AI Collaboration**
+   - Guide with clear prompts
+   - Verify assumptions
+   - Learn from responses
 
 ---
 
-# Best Practices (continued)
+# Key Takeaways
 
-3. **Iterative Development**
+1. **AI as a Tool**
+   - Accelerates development
+   - Requires clear direction
+   - Works best iteratively
 
-    - Break down complex tasks
-    - Build incrementally
-    - Use AI for specific parts
-
-4. **Learning Focus**
-    - Ask for explanations
-    - Understand the reasoning
-    - Learn from AI's suggestions
+2. **Real Benefits**
+   - Faster prototyping
+   - Better code structure
+   - Learning opportunities
 
 ---
 
 # Q&A
 
-## Thank you for watching!
+## Thank you!
 
-Resources:
-- Cursor AI: cursor.sh
-- Demo code: [GitHub repo]
-- Slides: [Link]
+Try it yourself:
+- Demo: work-hours-tracker-pi.vercel.app
+- Code: github.com/jukkamiettinen/work-hours-tracker
+- Tool: cursor.sh
